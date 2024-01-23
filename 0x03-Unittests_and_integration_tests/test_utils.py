@@ -13,6 +13,7 @@ from utils import access_nested_map
 from utils import get_json
 from utils import memoize
 
+
 class TestAccessNestedMap(unittest.TestCase):
     """Testcase class for utils.access_nested_map function."""
 
@@ -69,7 +70,7 @@ class TestMemoize(unittest.TestCase):
             @memoize
             def a_property(self):
                 return self.a_method()
-        with patch.object(TestClass,"a_method",
+        with patch.object(TestClass, "a_method",
                           return_value=lambda: 42) as memos:
             test = TestClass()
             self.assertEqual(test.a_property(), 42)

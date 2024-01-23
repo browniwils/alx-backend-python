@@ -4,10 +4,10 @@
 
 import unittest
 from typing import Dict
-from client import  GithubOrgClient
+from client import GithubOrgClient
 from fixtures import TEST_PAYLOAD
 from parameterized import parameterized
-from parameterized import parameterized_class 
+from parameterized import parameterized_class
 from requests import HTTPError
 from unittest.mock import MagicMock
 from unittest.mock import Mock
@@ -22,7 +22,6 @@ class TestGithubOrgClient(unittest.TestCase):
         ("google", {"login": "google"}),
         ("abc", {"login": "abc"}),
     ])
-
     @patch("client.get_json")
     def test_org(self, org: str, resp: Dict, mocked_fxn: MagicMock) -> None:
         """Tests for org method."""
@@ -141,8 +140,9 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
     def test_public_repos_with_license(self) -> None:
         """Tests for public_repos method with a license."""
 
-        self.assertEqual(GithubOrgClient("google").public_repos(license="apache-2.0"),
-                         self.apache2_repos)
+        self.assertEqual(
+            GithubOrgClient("google").public_repos(license="apache-2.0"),
+            self.apache2_repos)
 
     @classmethod
     def tearDownClass(cls) -> None:
